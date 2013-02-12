@@ -115,8 +115,13 @@ Func ReleaseShit($hwnd,$belowPokeCenter)
 	  WEnd
 	  Send("s")
 	  Sleep(300)
-	  Send("l")
-	  Sleep(300)
+	  
+	  
+	  While((PixelGetColor(471,54,$hwnd)==0xF8F8F8)==false)
+		 Send("k")
+		 Sleep(300)
+	  WEnd
+
 	  Send("s")
 	  Sleep(400)
 	  Send("i")
