@@ -1,7 +1,7 @@
 #cs ----------------------------------------------------------------------------
 
  AutoIt Version: 3.3.8.1
- Author:         myName
+ Author:				 myName
 
  Script Function:
 	Template AutoIt script.
