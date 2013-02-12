@@ -8,10 +8,12 @@
 
 #ce ----------------------------------------------------------------------------
 
-#include "common.au3"
+#include "main.au3"
 
 HotKeySet("{HOME}", 'Nakurwiaj')
 HotKeySet("{END}", 'Wykurwiaj')
+
+HotKeySet("{PGUP}",'DoJaja')
 
 Opt("PixelCoordMode",0)
 
@@ -19,11 +21,17 @@ Opt("PixelCoordMode",0)
 
 Func Nakurwiaj()
    $hwnd = WinGetHandle("VisualBoyAdvance")
-   MoveLeftRight($hwnd)
+   Main($hwnd)
 EndFunc
 
 Func Wykurwiaj()
    Exit(0)
+EndFunc
+
+Func DoJaja()
+   $hwnd = WinGetHandle("VisualBoyAdvance")
+   LeavePokeCenter($hwnd)
+   GetEgg($hwnd)
 EndFunc
 
 While(1)

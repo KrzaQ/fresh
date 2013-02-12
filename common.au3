@@ -13,28 +13,12 @@ Func CheckIfHatch($hwnd)
    return $color == 0
 EndFunc
 
-Func MoveLeftRight($hwnd)
-   While(CheckIfHatch($hwnd) == false)
-	  Send("{SHIFTDOWN}")
-	  Sleep(50)
-	  Send("z")
-	  Sleep(50)
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Sleep(50)
-	  Send("z")
-	  Sleep(50)
-	  Send("a")
-	  Sleep(50)
-	  Send("{SHIFTUP}")
-   WEnd
+Func CheckIfShiny($hwnd,$pokemon)
+   $color = PixelGetColor(382,254);
+   return ($color == 0xF0E078) == false
 EndFunc
 
+Func OnBike($hwnd)
+   $color = PixelGetColor(369,255);
+   return ($color == 0x682828) == false
+EndFunc
