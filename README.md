@@ -2,6 +2,8 @@
 - - -
 A simple script to hunt shiny eggs in emulated PoKeMoN Fire Red
 
+I'm doing it for myself and for now it has hardcoded controls
+
 # License
 - - -
 Copyright (C) 2013 KrzaQ

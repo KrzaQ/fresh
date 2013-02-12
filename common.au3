@@ -10,30 +10,31 @@
 
 Func CheckIfHatch($hwnd)
    $color = PixelGetColor(692,70);
-   MsgBox(0,"color",$color)
+   return $color == 0
 EndFunc
 
 Func MoveLeftRight($hwnd)
-   Send("{SHIFTDOWN}")
-   Sleep(50)
-   Send("z")
-   Sleep(50)
-   Send("llllllllll")
-   Send("llllllllll")
-   Send("llllllllll")
-   Send("llllllllll")
-   Send("llllllllll")
-   Send("jjjjjjjjjj")
-   Send("jjjjjjjjjj")
-   Send("jjjjjjjjjj")
-   Send("jjjjjjjjjj")
-   Send("jjjjjjjjjj")
-   Sleep(50)
-   Send("z")
-   Sleep(50)
-   Send("{SHIFTUP}")
-   CheckIfHatch($hwnd)
+   While(CheckIfHatch($hwnd) == false)
+	  Send("{SHIFTDOWN}")
+	  Sleep(50)
+	  Send("z")
+	  Sleep(50)
+	  Send("llllllllll")
+	  Send("llllllllll")
+	  Send("llllllllll")
+	  Send("llllllllll")
+	  Send("llllllllll")
+	  Send("jjjjjjjjjj")
+	  Send("jjjjjjjjjj")
+	  Send("jjjjjjjjjj")
+	  Send("jjjjjjjjjj")
+	  Send("jjjjjjjjjj")
+	  Sleep(50)
+	  Send("z")
+	  Sleep(50)
+	  Send("a")
+	  Sleep(50)
+	  Send("{SHIFTUP}")
+   WEnd
 EndFunc
-
-; Script Start - Add your code below here
 
