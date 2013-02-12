@@ -41,8 +41,9 @@ Func MoveLeftRight($hwnd)
 	  Sleep(100)
    WEnd
    Send("{SHIFTDOWN}")
+   Sleep(100)
    Send("a")
-   Sleep(500)
+   Sleep(700)
    Send("{SHIFTUP}")
    $eggs = $eggs - 1
 EndFunc
@@ -109,17 +110,17 @@ Func ReleaseShit($hwnd,$belowPokeCenter)
 	  Next
 	  
 	  Send("k")
-	  Sleep(100)
+	  Sleep(300)
 	  Send("s")
 	  Sleep(300)
 	  Send("l")
 	  Sleep(300)
 	  Send("s")
-	  Sleep(300)
+	  Sleep(400)
 	  Send("i")
-	  Sleep(300)
+	  Sleep(400)
 	  Send("i")
-	  Sleep(300)
+	  Sleep(400)
 	  Send("s")
 	  Sleep(300)
 	  Send("i")
@@ -187,13 +188,12 @@ Func GetEgg($hwnd)
    Send("jjjjjjjjjjjjjjjjjjjjj")
    Sleep(100)
    Send("iiiiiiiiiiiiiiiiiiiii")
-   
    Sleep(150)
-   Send("l")
-   Sleep(150)
-   Send("l")
-   Sleep(150)
-   Send("l")
+	  
+   While((PixelGetColor(30,138,$hwnd) == 0xC8A860)==false)
+	  Send("l")
+	  Sleep(250)
+   WEnd
    
    Sleep(150)
    
@@ -205,7 +205,7 @@ Func GetEgg($hwnd)
 	  Send("k")
 	  Sleep(300)
 	  Send("k")
-	  Sleep(1000)
+	  Sleep(750)
 	  if(CheckIfHatch($hwnd)) Then
 		 Send("{SHIFTUP}")
 		 ReleaseShit($hwnd,false)
@@ -214,26 +214,27 @@ Func GetEgg($hwnd)
 	  
 	  $color = PixelGetColor(30,138,$hwnd)
 	  
-	  if(color == 0) Then
+	  if($color == 0) Then
 		 While(PixelGetColor(30,138,$hwnd) == 0)
 			Send("k")
 			Sleep(250)
 		 WEnd
 	  Else
-		 While(PixelGetColor(30,138,$hwnd) == 0)
-			Send("k")
+		 While((PixelGetColor(30,138,$hwnd) == 0xC8A860) == false)
+			Send("i")
 			Sleep(250)
 		 WEnd
 	  EndIf
 	  
    WEnd
    
+   Sleep(750)
    Send("l")
-   Sleep(200)
+   Sleep(250)
    Send("l")
-   Sleep(200)
+   Sleep(250)
    Send("l")
-   Sleep(200)
+   Sleep(250)
    
    for $i = 0 To 8 Step 1
 	  Send("s")
@@ -245,12 +246,10 @@ Func GetEgg($hwnd)
    Send("a")
    Sleep(250)
    
-   Send("j")
-   Sleep(100)
-   Send("j")
-   Sleep(100)
-   Send("j")
-   Sleep(100)
+   While((PixelGetColor(30,138,$hwnd) == 0xC8A860)==false)
+	  Send("j")
+	  Sleep(250)
+   WEnd
    
    for $i = 0 to 12 Step 1
 	  Send("k")
@@ -274,9 +273,9 @@ Func Main($hwnd)
 	  if($isshiny == False) Then
 		 $msg = "Not shiny :("
 		 Send("{SHIFTDOWN}")
-		 Sleep(500)
+		 Sleep(700)
 		 Send("a")
-		 Sleep(250)
+		 Sleep(400)
 		 Send("{SHIFTUP}")
 		 
 		 ReleaseShit($hwnd,true)
