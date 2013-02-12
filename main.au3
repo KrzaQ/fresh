@@ -98,11 +98,13 @@ Func ReleaseShit($hwnd,$belowPokeCenter)
 		; arrow at Bill's PC
 		While((PixelGetColor(40,99,$hwnd)==0x606060)==false)
 			Send("s")
+			Sleep(50)
 		Wend
 		
 		; arrow at WITHDRAW POKEMON
 		While((PixelGetColor(40,99,$hwnd)==0x606060)==false)
 			Send("s")
+			Sleep(50)
 		Wend
 	  
 	  

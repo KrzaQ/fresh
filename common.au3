@@ -27,6 +27,6 @@ EndFunc
 
 Func MakeScreenshot($hwnd)
 	$ext = "png"
-	$out = @ScriptDir & "\" & @MDAY & "-" & @MON & "-" & @YEAR & "-" & @HOUR & "-" & @MIN & "-" & @SEC & "." & $ext
+	$out = @ScriptDir & "\img\" & @MDAY & "-" & @MON & "-" & @YEAR & "-" & @HOUR & "-" & @MIN & "-" & @SEC & "." & $ext
 	_ScreenCapture_CaptureWnd($out, $hWnd)
 EndFunc
