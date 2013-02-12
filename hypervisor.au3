@@ -13,7 +13,6 @@
 HotKeySet("{HOME}", 'Nakurwiaj')
 HotKeySet("{END}", 'Wykurwiaj')
 
-HotKeySet("{PGUP}",'DoJaja')
 
 Opt("PixelCoordMode",0)
 
@@ -28,11 +27,6 @@ Func Wykurwiaj()
    Exit(0)
 EndFunc
 
-Func DoJaja()
-   $hwnd = WinGetHandle("VisualBoyAdvance")
-   LeavePokeCenter($hwnd)
-   GetEgg($hwnd)
-EndFunc
 
 While(1)
    Sleep(100)

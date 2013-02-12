@@ -8,6 +8,8 @@
 
 #ce ----------------------------------------------------------------------------
 
+#include <ScreenCapture.au3>
+
 Func CheckIfHatch($hwnd)
    $color = PixelGetColor(692,70);
    return $color == 0
@@ -21,4 +23,10 @@ EndFunc
 Func OnBike($hwnd)
    $color = PixelGetColor(369,255);
    return ($color == 0x682828) == false
+EndFunc
+
+Func MakeScreenshot($hwnd)
+	$ext = "png"
+	$out = @ScriptDir & "\" & @MDAY & "-" & @MON & "-" & @YEAR & "-" & @HOUR & "-" & @MIN & "-" & @SEC & "." & $ext
+	_ScreenCapture_CaptureWnd($out, $hWnd)
 EndFunc

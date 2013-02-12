@@ -13,39 +13,38 @@
 Global $eggs = 5
 
 Func MoveLeftRight($hwnd)
-   While(CheckIfHatch($hwnd) == false)
-	  Send("{SHIFTDOWN}")
-	  Sleep(100)
-	  Send("z")
-	  Sleep(100)
-	  if(OnBike($hwnd) == false) Then
-		 Send("z")
-		 Sleep(100)
-	  EndIf
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("llllllllll")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Send("jjjjjjjjjj")
-	  Sleep(100)
-	  Send("z")
-	  Sleep(100)
-	  Send("a")
-	  Sleep(100)
-	  Send("{SHIFTUP}")
-	  Sleep(100)
-   WEnd
-   Send("{SHIFTDOWN}")
-   Sleep(100)
-   Send("a")
-   Sleep(700)
-   Send("{SHIFTUP}")
-   $eggs = $eggs - 1
+	
+	; 0 - left
+	; 1 - right
+	$direction = 0
+	
+	Send("{SHIFTDOWN}")
+	Sleep(100)
+	While(CheckIfHatch($hwnd) == false)
+		if(OnBike($hwnd) == false) Then
+			Send("z")
+			Sleep(100)
+		EndIf
+		
+		if($direction == 1) Then
+			Send("l")
+		ElseIf($direction == 0) Then
+			Send("j")
+		EndIf
+		
+		if(PixelGetColor(331,288,$hwnd) == 0xD8C0A0) Then
+			$direction = 1
+		ElseIf(PixelGetColor(416,269,$hwnd) == 0x9060A0) Then
+			$direction = 0
+		ElseIf(PixelGetColor(668,492,$hwnd) == 0xF8F8F8) Then
+			Send("a")
+			Sleep(700)
+		EndIf
+		
+	WEnd
+	Sleep(100)
+	Send("{SHIFTUP}")
+	$eggs = $eggs - 1
 EndFunc
 
 Func ReleaseShit($hwnd,$belowPokeCenter)
@@ -273,6 +272,8 @@ Func Main($hwnd)
    While($isshiny == false)
 	  
 	  MoveLeftRight($hwnd)
+	  
+	  MakeScreenshot($hwnd)
 	  
 	  $isshiny = CheckIfShiny($hwnd,123);
 	  
