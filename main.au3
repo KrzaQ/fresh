@@ -14,8 +14,8 @@ Global $eggs = 5
 
 Func MoveLeftRight($hwnd)
 	
-	; 0 - left
-	; 1 - right
+	; 0 - right
+	; 1 - left
 	$direction = 0
 	
 	Send("{SHIFTDOWN}")
@@ -48,103 +48,102 @@ Func MoveLeftRight($hwnd)
 EndFunc
 
 Func ReleaseShit($hwnd,$belowPokeCenter)
-   if($belowPokeCenter) Then
-	  Send("{SHIFTDOWN}")
+	if($belowPokeCenter) Then
+		Send("{SHIFTDOWN}")
 	  
-	  if(OnBike($hwnd) == false) Then
-		 Sleep(100)
-		 Send("z")
-		 Sleep(100)
-	  EndIf
+		if(OnBike($hwnd) == false) Then
+			Sleep(100)
+			Send("z")
+			Sleep(100)
+		EndIf
 	  
-	  
-	  
-	  Send("llllllllll")
-	  Sleep(100)
-	  Send("llllllllll")
-	  Sleep(100)
-	  Send("llllllllll")
-	  Sleep(100)
-	  Send("llllllllll")
-	  Sleep(100)
-	  Send("llllllllll")
-	  Sleep(100)
-	  
-	  $finish = false
-	  
-	  While($finish == false)
-		 Send("j")
-		 Sleep(250)
-		 $pixel1 = PixelGetColor(368,145);
-		 $pixel2 = PixelGetColor(370,190);
+		While((PixelGetColor(416,269,$hwnd) == 0x9060A0) == false)
+			Send("l")
+		WEnd
+		
+		$finish = false
+		
+		While($finish == false)
+			Send("j")
+			Sleep(200)
+			$pixel1 = PixelGetColor(368,145);
+			$pixel2 = PixelGetColor(370,190);
 		 
-		 if($pixel1 == 0xC85048 and $pixel2 == 0x60A0D8) Then
-			$finish = true
-		 EndIf
-	  WEnd
+			if($pixel1 == 0xC85048 and $pixel2 == 0x60A0D8) Then
+				$finish = true
+			EndIf
+		WEnd
 	  
-	  Send("iiiiiiiiiiiiiiiiiiiii")
-	  Send("iiiiiiiiiiiiiiiiiiiii")
-	  Send("iiiiiiiiiiiiiiiiiiiii")
-	  Send("iiiiiiiiiiiiiiiiiiiii")
+		Send("iiiiiiiiiiiiiiiiiiiii")
+		Send("iiiiiiiiiiiiiiiiiiiii")
+		Send("iiiiiiiiiiiiiiiiiiiii")
+		Send("iiiiiiiiiiiiiiiiiiiii")
 	  
-	  Send("lllllllllllllllllllll")
-	  Send("lllllllllllllllllllll")
-	  Send("lllllllllllllllllllll")
+		Send("lllllllllllllllllllll")
+		Send("lllllllllllllllllllll")
+		Send("lllllllllllllllllllll")
 	  
-	  Send("iiiiiiiiiiiiiiiiiiiii")
-	  Send("iiiiiiiiiiiiiiiiiiiii")
+		Send("iiiiiiiiiiiiiiiiiiiii")
+		Send("iiiiiiiiiiiiiiiiiiiii")
 	  
-	  Send("jjjjjjjjjjjjjjjjjjjjj")
-	  Send("jjjjjjjjjjjjjjjjjjjjj")
-	  Send("jjjjjjjjjjjjjjjjjjjjj")
+		Send("jjjjjjjjjjjjjjjjjjjjj")
+		Send("jjjjjjjjjjjjjjjjjjjjj")
+		Send("jjjjjjjjjjjjjjjjjjjjj")
 	  
-	  Sleep(100)
-	  Send("i")
-	  Sleep(250)
-	  
-	  for $i = 1 To 5 Step 1
-		 Send("s")
-		 Sleep(300)
-	  Next
-	  
-	  While((PixelGetColor(39,146,$hwnd)==0x606060)==false)
-		 Send("k")
-		 Sleep(300)
-	  WEnd
-	  Send("s")
-	  Sleep(300)
+		Sleep(100)
+		Send("i")
+		Sleep(250)
 	  
 	  
-	  While((PixelGetColor(471,54,$hwnd)==0xF8F8F8)==false)
-		 Send("k")
-		 Sleep(300)
-	  WEnd
+		; arrow at Bill's PC
+		While((PixelGetColor(40,99,$hwnd)==0x606060)==false)
+			Send("s")
+		Wend
+		
+		; arrow at WITHDRAW POKEMON
+		While((PixelGetColor(40,99,$hwnd)==0x606060)==false)
+			Send("s")
+		Wend
+	  
+	  
+		While((PixelGetColor(39,146,$hwnd)==0x606060)==false)
+			Send("k")
+			Sleep(100)
+		WEnd
+		
+		Send("s")
+		Sleep(300)
+	  
+	  
+		While((PixelGetColor(471,54,$hwnd)==0xF8F8F8)==false)
+			Send("k")
+			Sleep(300)
+		WEnd
 
-	  Send("s")
-	  Sleep(400)
-	  Send("i")
-	  Sleep(400)
-	  Send("i")
-	  Sleep(400)
-	  Send("s")
-	  Sleep(300)
-	  Send("i")
-	  Sleep(300)
-	  Send("s")
-	  Sleep(300)
+		Send("s")
+		Sleep(400)
+		Send("i")
+		Sleep(400)
+		Send("i")
+		Sleep(400)
+		Send("s")
+		Sleep(300)
+		Send("i")
+		Sleep(300)
+		Send("s")
+		Sleep(300)
 	  
-	  for $i = 1 To 10 Step 1
-		 Send("a")
-		 Sleep(300)
-	  Next
+		for $i = 1 To 10 Step 1
+			Send("a")
+			Sleep(300)
+		Next
 	  
 	  
-	  Send("{SHIFTUP}")
-   Else
-	  MsgBox(0,"error","not supported atm")
-	  Exit(0)
-   EndIf
+		Send("{SHIFTUP}")
+	Else
+		MsgBox(0,"error","not supported atm")
+		Exit(0)
+	EndIf
    
    
 EndFunc
@@ -179,90 +178,80 @@ Func LeavePokeCenter($hwnd)
 EndFunc
 
 Func GetEgg($hwnd)
-   Send("{SHIFTDOWN}")
-   Sleep(100)
-   Send("z")
-   Sleep(100)
+	Send("{SHIFTDOWN}")
+	Sleep(100)
+	Send("z")
+	Sleep(100)
    
-   if(OnBike($hwnd) == false) Then
-	  Sleep(100)
-	  Send("z")
-	  Sleep(100)
-   EndIf
+	if(OnBike($hwnd) == false) Then
+		Sleep(100)
+		Send("z")
+		Sleep(100)
+	EndIf
 	  
-   Sleep(100)
-   Send("jjjjjjjjjjjjjjjjjjjjj")
-   Sleep(100)
-   Send("iiiiiiiiiiiiiiiiiiiii")
-   Sleep(150)
+	Sleep(100)
+	Send("jjjjjjjjjjjjjjjjjjjjj")
+	Sleep(100)
+	Send("iiiiiiiiiiiiiiiiiiiii")
+	Sleep(150)
 	  
-   While((PixelGetColor(30,138,$hwnd) == 0xC8A860)==false)
-	  Send("l")
-	  Sleep(250)
-   WEnd
+	While((PixelGetColor(30,138,$hwnd) == 0xC8A860)==false)
+		Send("l")
+		Sleep(250)
+	WEnd
    
-   Sleep(150)
+	Sleep(150)
    
-   While((PixelGetColor(560,273) == 0xF8D0B0) == false)
-	  Send("i")
-	  Sleep(300)
-	  Send("i")
-	  Sleep(300)
-	  Send("k")
-	  Sleep(300)
-	  Send("k")
-	  Sleep(750)
-	  if(CheckIfHatch($hwnd)) Then
-		 Send("{SHIFTUP}")
-		 ReleaseShit($hwnd,false)
-		 Send("{SHIFTDOWN}")
-	  EndIf
-	  
-	  $color = PixelGetColor(30,138,$hwnd)
-	  
-	  if($color == 0) Then
-		 While(PixelGetColor(30,138,$hwnd) == 0)
+	While((PixelGetColor(560,273,$hwnd) == 0xF8D0B0) == false)
+	   
+		While((PixelGetColor(375,333) == 0x583840) == false)
 			Send("k")
-			Sleep(250)
-		 WEnd
-	  Else
-		 While((PixelGetColor(30,138,$hwnd) == 0xC8A860) == false)
+		WEnd
+		
+		While((PixelGetColor(30,138,$hwnd) == 0) == false)
 			Send("i")
-			Sleep(250)
-		 WEnd
-	  EndIf
+		WEnd
 	  
-   WEnd
+		$color = PixelGetColor(30,138,$hwnd)
+	  
+		if($color == 0) Then
+			While(PixelGetColor(30,138,$hwnd) == 0)
+				Send("k")
+				Sleep(250)
+			WEnd
+		Else
+			While((PixelGetColor(30,138,$hwnd) == 0xC8A860) == false)
+				Send("i")
+				Sleep(250)
+			WEnd
+		EndIf
+	  
+	WEnd
    
-   Sleep(750)
-   Send("l")
-   Sleep(250)
-   Send("l")
-   Sleep(250)
-   Send("l")
-   Sleep(250)
+	While((PixelGetColor(415,267,$hwnd) == 0xF8D0B0) == false)
+		Send("l")
+	WEnd
    
-   for $i = 0 To 8 Step 1
-	  Send("s")
-	  Sleep(300)
-   Next
+	for $i = 0 To 8 Step 1
+		Send("s")
+		Sleep(300)
+	Next
    
-   Send("a")
-   Sleep(250)
-   Send("a")
-   Sleep(250)
+	Send("a")
+	Sleep(250)
+	Send("a")
+	Sleep(250)
    
-   While((PixelGetColor(30,138,$hwnd) == 0xC8A860)==false)
-	  Send("j")
-	  Sleep(250)
-   WEnd
+	While((PixelGetColor(30,138,$hwnd) == 0xC8A860)==false)
+		Send("j")
+		Sleep(250)
+	WEnd
    
-   for $i = 0 to 12 Step 1
-	  Send("k")
-	  Sleep(100)
-   Next
+	While((PixelGetColor(375,333) == 0x583840) == false)
+		Send("k")
+	WEnd
    
-   Send("{SHIFTUP}")
+	Send("{SHIFTUP}")
 EndFunc
 
 Func Main($hwnd)
