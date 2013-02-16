@@ -129,16 +129,21 @@ Func ReleaseShit($hwnd,$belowPokeCenter)
 
 		Send("s")
 		Sleep(400)
-		Send("i")
-		Sleep(400)
-		Send("i")
-		Sleep(400)
+		
+		While((PixelGetColor(495,340,$hwnd)==0x606060)==false)
+			Send("k")
+			Sleep(200)
+		WEnd
 		Send("s")
-		Sleep(300)
-		Send("i")
-		Sleep(300)
+		Sleep(400)
+		
+		While((PixelGetColor(592,338,$hwnd)==0x606060)==false)
+			Send("i")
+			Sleep(200)
+		WEnd
+		
 		Send("s")
-		Sleep(300)
+		Sleep(200)
 	  
 		for $i = 1 To 10 Step 1
 			Send("a")
@@ -271,7 +276,7 @@ Func Main($hwnd)
 	  
 	  MakeScreenshot($hwnd)
 	  
-	  $isshiny = CheckIfShiny($hwnd,123);
+	  $isshiny = CheckIfShiny($hwnd,280);
 	  
 	  $msg = "Shiny!"
 	  if($isshiny == False) Then

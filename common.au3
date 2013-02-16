@@ -16,8 +16,13 @@ Func CheckIfHatch($hwnd)
 EndFunc
 
 Func CheckIfShiny($hwnd,$pokemon)
-   $color = PixelGetColor(382,254);
-   return ($color == 0xF0E078) == false
+   If($pokemon == 123) Then
+	  $color = PixelGetColor(382,254);
+	  return ($color == 0xF0E078) == false
+   ElseIf($pokemon == 280) Then
+	  $color = PixelGetColor(386,258);
+	  return ($color == 0x70B870) == false
+   EndIf	  
 EndFunc
 
 Func OnBike($hwnd)
